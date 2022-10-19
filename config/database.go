@@ -21,7 +21,12 @@ func DatabaseConnect() {
 		os.Getenv("DB_NAME"),
 	)
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
-	db.Debug().AutoMigrate(model.User{})
+	db.Debug().AutoMigrate(
+		model.User{},
+		model.SocialMedia{},
+		model.Photo{},
+		model.Comment{},
+	)
 
 	Db = db
 

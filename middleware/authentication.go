@@ -9,7 +9,9 @@ import (
 
 func Authentication() gin.HandlerFunc {
 	return func(ctx *gin.Context) {
-		if userData, err := helpers.VerifyToken(ctx); err != nil {
+		userData, err := helpers.VerifyToken(ctx)
+
+		if err != nil {
 			ctx.Writer.Header().Set("Content-Type", "application/json")
 			ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 				"code":    97,

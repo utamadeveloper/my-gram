@@ -21,8 +21,11 @@ func StartApp() *gin.Engine {
 
 			userRoute := v1.Group("/users")
 			{
-				userRoute.POST("/", handler.UserCreate)
 				userRoute.POST("/register", handler.UserRegister)
+
+				userRoute.Use(middleware.Authentication())
+				userRoute.Use(middleware.Authorization())
+				userRoute.POST("/", handler.UserCreate)
 				userRoute.GET("/", handler.UserFindAll)
 				userRoute.GET("/:id", handler.UserFindOne)
 				userRoute.PUT("/:id", handler.UserUpdate)

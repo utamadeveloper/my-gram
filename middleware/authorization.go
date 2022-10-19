@@ -16,20 +16,10 @@ func Authorization() gin.HandlerFunc {
 			user model.User
 		)
 
-		claim, err := helpers.VerifyToken(ctx)
+		claim, _ := helpers.VerifyToken(ctx)
 
-		if err != nil {
-			ctx.Writer.Header().Set("Content-Type", "application/json")
-			ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-				"code":    97,
-				"type":    "UNAUTHENTICATED",
-				"message": "Failed verify user",
-				"error":   err,
-			})
-			return
-		}
-
-		userById := config.Db.Debug().Where("id=?", claim.(jwt.MapClaims)).First(&user)
+		userId := claim.(jwt.MapClaims)["id"]
+		userById := config.Db.Debug().Where("id=?", userId).First(&user)
 
 		if userById.Error != nil {
 			ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
