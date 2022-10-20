@@ -14,9 +14,9 @@ type User struct {
 	ID           string         `gorm:"size:36;primaryKey"`
 	Username     string         `json:"username,omitempty" gorm:"size:20;index:idx_username,unique" form:"username" valid:"required~Username is required, minstringlength(3)~Username must be at least 3 characters"`
 	Email        string         `json:"email,omitempty" gorm:"size:255;index:idx_email,unique" form:"email" valid:"required~Email is required, email~Email must valid email address"`
-	Password     string         `json:"password,omitempty" gorm:"size:60" form:"password" valid:"required~Password is required, minstringlength(8)~Password must be at least 8 characters"`
+	Password     string         `json:"password,omitempty" gorm:"size:60" form:"password" valid:"required~Password is required, minstringlength(6)~Password must be at least 6 characters"`
 	DOB          datatypes.Date `json:"dob,omitempty" form:"dob" valid:"required~DOB is required"`
-	Age          int            `json:"age,omitempty" form:"age" valid:"required~Age is required"`
+	Age          int            `json:"age,omitempty" form:"age" valid:"required~Age is required, range(8|100)~Age at least 8 years old"`
 	SocialMedias []SocialMedia  `json:"social_medias" gorm:"foreignkey:UserID"`
 	Photos       []Photo        `json:"photos" gorm:"foreignkey:UserID"`
 	Comments     []Comment      `json:"comments" gorm:"foreignkey:UserID"`

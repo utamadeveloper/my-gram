@@ -4,6 +4,7 @@ import (
 	"my-gram/config"
 	"my-gram/model"
 	"net/http"
+	"strings"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
@@ -66,11 +67,21 @@ func UserRegister(ctx *gin.Context) {
 	userCreated := config.Db.Debug().Create(&user)
 
 	if userCreated.Error != nil {
+		userErr := userCreated.Error.Error()
+
+		if strings.Contains(userErr, "duplicate key value violates unique constraint \"idx_email\"") {
+			userErr = "Email already used"
+		}
+
+		if strings.Contains(userErr, "duplicate key value violates unique constraint \"idx_username\"") {
+			userErr = "Username already used"
+		}
+
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 			"code":    96,
 			"type":    "BAD_REQUEST",
 			"message": "Failed create user",
-			"error":   userCreated.Error.Error(),
+			"error":   userErr,
 		})
 		return
 	}
