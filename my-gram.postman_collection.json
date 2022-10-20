@@ -111,7 +111,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"dob\":\"2000-12-22T00:00:00+08:00\",\r\n    \"age\": 20,\r\n    \"email\":\"agusyudi@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"username\":\"yudi\"\r\n}",
+							"raw": "{\r\n    \"dob\":\"2000-12-22T00:00:00+08:00\",\r\n    \"age\": 8,\r\n    \"email\":\"goviutama@gmail.com\",\r\n    \"password\":\"123456\",\r\n    \"username\":\"govi\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -154,13 +154,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/users/4eae7c39-0694-4929-8b23-44801b3b8564",
+							"raw": "{{url}}/users/b5263222-4501-4123-befd-977ed514b555",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"users",
-								"4eae7c39-0694-4929-8b23-44801b3b8564"
+								"b5263222-4501-4123-befd-977ed514b555"
 							]
 						}
 					},
@@ -173,7 +173,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"dob\":\"2000-12-22T00:00:00+08:00\",\r\n    \"age\": 21,\r\n    \"email\":\"goviutama@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"username\":\"govi\"\r\n}",
+							"raw": "{\r\n    \"dob\":\"2000-12-22T00:00:00+08:00\",\r\n    \"age\": 20,\r\n    \"email\":\"agusyudi@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"username\":\"yudi\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -181,13 +181,13 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/users/c0cb1983-055c-45de-be91-d5c01f90870d",
+							"raw": "{{url}}/users/b5263222-4501-4123-befd-977ed514b555",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"users",
-								"c0cb1983-055c-45de-be91-d5c01f90870d"
+								"b5263222-4501-4123-befd-977ed514b555"
 							]
 						}
 					},
@@ -199,13 +199,13 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/users/87374f29-96f7-4ac8-80b7-f7f4f33ee23f",
+							"raw": "{{url}}/users/4eae7c39-0694-4929-8b23-44801b3b8564",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"users",
-								"87374f29-96f7-4ac8-80b7-f7f4f33ee23f"
+								"4eae7c39-0694-4929-8b23-44801b3b8564"
 							]
 						}
 					},
@@ -254,6 +254,13 @@
 							],
 							"path": [
 								"socialmedias"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "4eae7c39-0694-4929-8b23-44801b3b8564",
+									"disabled": true
+								}
 							]
 						}
 					},
@@ -284,7 +291,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"first_name\": \"Yudi\",\r\n    \"last_name\": \"Artawan\",\r\n    \"email\": \"yudiartawan@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"user_id\": \"b5263222-4501-4123-befd-977ed514b555\",\r\n    \"name\": \"Facebook\",\r\n    \"url\": \"https://www.facebook.com/agusyudi\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -359,12 +366,18 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/photos",
+							"raw": "{{url}}/photos?user_id=4eae7c39-0694-4929-8b23-44801b3b8564",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"photos"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "4eae7c39-0694-4929-8b23-44801b3b8564"
+								}
 							]
 						}
 					},
@@ -395,7 +408,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"first_name\": \"Yudi\",\r\n    \"last_name\": \"Artawan\",\r\n    \"email\": \"yudiartawan@gmail.com\"\r\n}",
+							"raw": "{\r\n    \"user_id\": \"4eae7c39-0694-4929-8b23-44801b3b8564\",\r\n    \"url\": \"https://c4.wallpaperflare.com/wallpaper/410/867/750/vector-forest-sunset-forest-sunset-forest-wallpaper-preview.jpg\",\r\n    \"title\": \"Forest\",\r\n    \"caption\": \"The forest with sunset\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
