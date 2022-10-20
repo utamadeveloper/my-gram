@@ -14,13 +14,17 @@ func StartApp() *gin.Engine {
 	{
 		v1 := api.Group("/v1")
 		{
-			// authRoute := v1.Group("/auth")
-			// {
-			// }
+			authRoute := v1.Group("/auth")
+			{
+				authRoute.POST("/login", handler.AuthLogin)
+
+				authRoute.Use(middleware.Authentication())
+				authRoute.Use(middleware.Authorization())
+				authRoute.POST("/refresh", handler.AuthRefresh)
+			}
 
 			userRoute := v1.Group("/users")
 			{
-				userRoute.POST("/login", handler.AuthLogin)
 				userRoute.POST("/register", handler.UserRegister)
 
 				userRoute.Use(middleware.Authentication())

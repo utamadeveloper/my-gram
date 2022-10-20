@@ -24,13 +24,50 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/users/login",
+							"raw": "{{url}}/auth/login",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"users",
+								"auth",
 								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{refresh_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/refresh",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"refresh"
 							]
 						}
 					},
@@ -558,7 +595,12 @@
 		},
 		{
 			"key": "access_token",
-			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1MjYzMjIyLTQ1MDEtNDEyMy1iZWZkLTk3N2VkNTE0YjU1NSJ9.h0QGCpJqawK3IJaHHaxT8EdbiIk9-frIA6BHr14bggE",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjYzNTQ1MTUsImlkIjoiYjUyNjMyMjItNDUwMS00MTIzLWJlZmQtOTc3ZWQ1MTRiNTU1In0.9duy53dJEsQX7CDimI-qaf3XkTDiMyQk0MQ_RCZyKec",
+			"type": "string"
+		},
+		{
+			"key": "refresh_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjY4NzI5MTUsImlkIjoiYjUyNjMyMjItNDUwMS00MTIzLWJlZmQtOTc3ZWQ1MTRiNTU1In0.TUIZVDFB0tZKQ2C2MawYSxvGJjclJZ2LETg2fUr2Cl0",
 			"type": "string"
 		}
 	]

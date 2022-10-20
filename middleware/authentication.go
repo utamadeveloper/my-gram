@@ -17,7 +17,6 @@ func Authentication() gin.HandlerFunc {
 				"code":    97,
 				"type":    "UNAUTHENTICATED",
 				"message": "Failed verify user",
-				"error":   err,
 			})
 			return
 

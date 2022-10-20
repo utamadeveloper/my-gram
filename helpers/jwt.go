@@ -4,14 +4,32 @@ import (
 	"errors"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 )
 
-func GenerateToken(id string) string {
+func GenerateAccessToken(id string) string {
 	claims := jwt.MapClaims{
-		"id": id,
+		"id":  id,
+		"exp": time.Now().Add(time.Hour * 24).Unix(),
+	}
+
+	parseToken := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	signedToken, err := parseToken.SignedString([]byte(os.Getenv("JWT_SECRET")))
+
+	if err != nil {
+		panic("Error while signing token")
+	}
+
+	return signedToken
+}
+
+func GenerateRefreshToken(id string) string {
+	claims := jwt.MapClaims{
+		"id":  id,
+		"exp": time.Now().Add(time.Hour * 24 * 7).Unix(), // 7 Days
 	}
 
 	parseToken := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
