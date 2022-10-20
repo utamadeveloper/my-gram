@@ -69,24 +69,24 @@ func CommentFindAll(ctx *gin.Context) {
 	photoIdQuery := ctx.Query("photo_id")
 	userIdQuery := ctx.Query("user_id")
 
-	userAll := config.Db.Debug()
+	commentAll := config.Db.Debug()
 
 	if photoIdQuery != "" {
-		userAll = userAll.Where("photo_id=?", photoIdQuery)
+		commentAll = commentAll.Where("photo_id=?", photoIdQuery)
 	}
 
 	if userIdQuery != "" {
-		userAll = userAll.Where("user_id=?", userIdQuery)
+		commentAll = commentAll.Where("user_id=?", userIdQuery)
 	}
 
-	userAll = userAll.Find(&comments)
+	commentAll = commentAll.Find(&comments)
 
-	if userAll.Error != nil {
+	if commentAll.Error != nil {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 			"code":    96,
 			"type":    "BAD_REQUEST",
 			"message": "Failed find all comment",
-			"error":   userAll.Error.Error(),
+			"error":   commentAll.Error.Error(),
 		})
 		return
 	}

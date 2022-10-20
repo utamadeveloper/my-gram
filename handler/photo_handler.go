@@ -63,14 +63,22 @@ func PhotoFindAll(ctx *gin.Context) {
 		photos []model.Photo
 	)
 
-	userAll := config.Db.Debug().Find(&photos)
+	userIdQuery := ctx.Query("user_id")
 
-	if userAll.Error != nil {
+	photoAll := config.Db.Debug().Preload("Comments")
+
+	if userIdQuery != "" {
+		photoAll = photoAll.Where("user_id=?", userIdQuery)
+	}
+
+	photoAll = photoAll.Find(&photos)
+
+	if photoAll.Error != nil {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 			"code":    96,
 			"type":    "BAD_REQUEST",
 			"message": "Failed find all photo",
-			"error":   userAll.Error.Error(),
+			"error":   photoAll.Error.Error(),
 		})
 		return
 	}
@@ -89,7 +97,7 @@ func PhotoFindOne(ctx *gin.Context) {
 	)
 
 	id := ctx.Param("id")
-	userById := config.Db.Debug().Where("id=?", id).First(&photo)
+	userById := config.Db.Debug().Where("id=?", id).Preload("Comments").First(&photo)
 
 	if userById.Error != nil {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{

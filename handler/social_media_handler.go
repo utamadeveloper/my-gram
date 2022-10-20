@@ -63,14 +63,22 @@ func SocialMediaFindAll(ctx *gin.Context) {
 		socialMedias []model.SocialMedia
 	)
 
-	userAll := config.Db.Debug().Find(&socialMedias)
+	userIdQuery := ctx.Query("user_id")
 
-	if userAll.Error != nil {
+	socialMediaAll := config.Db.Debug()
+
+	if userIdQuery != "" {
+		socialMediaAll = socialMediaAll.Where("user_id=?", userIdQuery)
+	}
+
+	socialMediaAll = socialMediaAll.Find(&socialMedias)
+
+	if socialMediaAll.Error != nil {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 			"code":    96,
 			"type":    "BAD_REQUEST",
 			"message": "Failed find all social media",
-			"error":   userAll.Error.Error(),
+			"error":   socialMediaAll.Error.Error(),
 		})
 		return
 	}
