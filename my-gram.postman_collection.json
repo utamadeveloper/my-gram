@@ -1,0 +1,565 @@
+{
+	"info": {
+		"_postman_id": "4ce4d2dc-cf56-4aca-ade5-3c7888e75cd0",
+		"name": "my-gram",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21912988"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"yudi\",\r\n    \"password\": \"12345678\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dob\":\"2000-12-22T00:00:00+08:00\",\r\n    \"age\": 20,\r\n    \"email\":\"agusyudi@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"username\":\"yudi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dob\":\"2000-12-22T00:00:00+08:00\",\r\n    \"age\": 20,\r\n    \"email\":\"agusyudi@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"username\":\"yudi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/register",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/4eae7c39-0694-4929-8b23-44801b3b8564",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"4eae7c39-0694-4929-8b23-44801b3b8564"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"dob\":\"2000-12-22T00:00:00+08:00\",\r\n    \"age\": 21,\r\n    \"email\":\"goviutama@gmail.com\",\r\n    \"password\":\"12345678\",\r\n    \"username\":\"govi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/c0cb1983-055c-45de-be91-d5c01f90870d",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"c0cb1983-055c-45de-be91-d5c01f90870d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users/87374f29-96f7-4ac8-80b7-f7f4f33ee23f",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"87374f29-96f7-4ac8-80b7-f7f4f33ee23f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "social media",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": \"b5263222-4501-4123-befd-977ed514b555\",\r\n    \"name\": \"Facebook\",\r\n    \"url\": \"https://www.facebook.com/agusyudi\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/socialmedias",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"socialmedias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/socialmedias",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"socialmedias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/socialmedias/bd1e10a4-543b-4a7d-8b97-59ed7da1e014",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"socialmedias",
+								"bd1e10a4-543b-4a7d-8b97-59ed7da1e014"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Yudi\",\r\n    \"last_name\": \"Artawan\",\r\n    \"email\": \"yudiartawan@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/socialmedias/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"socialmedias",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/socialmedias/ce2a2bde-c98a-40a5-aeba-8becccc8add4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"socialmedias",
+								"ce2a2bde-c98a-40a5-aeba-8becccc8add4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "photo",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": \"4eae7c39-0694-4929-8b23-44801b3b8564\",\r\n    \"url\": \"https://c4.wallpaperflare.com/wallpaper/410/867/750/vector-forest-sunset-forest-sunset-forest-wallpaper-preview.jpg\",\r\n    \"title\": \"Forest\",\r\n    \"caption\": \"The forest with sunset\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/photos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"photos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/photos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"photos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/photos/6ca812a2-920c-4c55-895f-1d24bdc2e3f4",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"photos",
+								"6ca812a2-920c-4c55-895f-1d24bdc2e3f4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"Yudi\",\r\n    \"last_name\": \"Artawan\",\r\n    \"email\": \"yudiartawan@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/photos/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"photos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/photos/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"photos",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": \"b5263222-4501-4123-befd-977ed514b555\",\r\n    \"photo_id\": \"6ca812a2-920c-4c55-895f-1d24bdc2e3f4\",\r\n    \"message\": \"Keren\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/comments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/comments?photo_id=6ca812a2-920c-4c55-895f-1d24bdc2e3f4&user_id=b5263222-4501-4123-befd-977ed514b555",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comments"
+							],
+							"query": [
+								{
+									"key": "photo_id",
+									"value": "6ca812a2-920c-4c55-895f-1d24bdc2e3f4"
+								},
+								{
+									"key": "user_id",
+									"value": "b5263222-4501-4123-befd-977ed514b555"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find one",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/comments/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comments",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": \"b5263222-4501-4123-befd-977ed514b555\",\r\n    \"photo_id\": \"6ca812a2-920c-4c55-895f-1d24bdc2e3f4\",\r\n    \"message\": \"Keren Abiezzz\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/comments/4c238d5f-3d1d-415a-bec3-ce56a86377aa",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comments",
+								"4c238d5f-3d1d-415a-bec3-ce56a86377aa"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/comments/3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"comments",
+								"3"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{access_token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:8000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "access_token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI1MjYzMjIyLTQ1MDEtNDEyMy1iZWZkLTk3N2VkNTE0YjU1NSJ9.h0QGCpJqawK3IJaHHaxT8EdbiIk9-frIA6BHr14bggE",
+			"type": "string"
+		}
+	]
+}
