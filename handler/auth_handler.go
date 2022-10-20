@@ -47,7 +47,7 @@ func AuthLogin(ctx *gin.Context) {
 
 	errHashChecked := helpers.CheckPasswordHash([]byte(user.Password), []byte(payload.Password))
 
-	if errHashChecked != true {
+	if !errHashChecked {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 			"code":    96,
 			"type":    "BAD_REQUEST",
