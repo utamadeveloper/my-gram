@@ -12,14 +12,14 @@ import (
 type User struct {
 	gorm.Model
 	ID           string         `gorm:"size:36;primaryKey"`
-	Username     string         `json:"username" gorm:"size:20;index:idx_username,unique" form:"username" valid:"required~Username is required, minstringlength(3)~Username must be at least 3 characters"`
-	Email        string         `json:"email" gorm:"size:255;index:idx_email,unique" form:"email" valid:"required~Email is required, email~Email must valid email address"`
-	Password     string         `json:"password" gorm:"size:60" form:"password" valid:"required~Password is required, minstringlength(8)~Password must be at least 8 characters"`
+	Username     string         `json:"username,omitempty" gorm:"size:20;index:idx_username,unique" form:"username" valid:"required~Username is required, minstringlength(3)~Username must be at least 3 characters"`
+	Email        string         `json:"email,omitempty" gorm:"size:255;index:idx_email,unique" form:"email" valid:"required~Email is required, email~Email must valid email address"`
+	Password     string         `json:"password,omitempty" gorm:"size:60" form:"password" valid:"required~Password is required, minstringlength(8)~Password must be at least 8 characters"`
 	DOB          datatypes.Date `json:"dob,omitempty" form:"dob" valid:"required~DOB is required"`
 	Age          int            `json:"age,omitempty" form:"age" valid:"required~Age is required"`
-	SocialMedias []SocialMedia  `json:"social_medias,omitempty" gorm:"foreignkey:UserID"`
-	Photos       []Photo        `json:"photos,omitempty" gorm:"foreignkey:UserID"`
-	Comments     []Comment      `json:"comments,omitempty" gorm:"foreignkey:UserID"`
+	SocialMedias []SocialMedia  `json:"social_medias" gorm:"foreignkey:UserID"`
+	Photos       []Photo        `json:"photos" gorm:"foreignkey:UserID"`
+	Comments     []Comment      `json:"comments" gorm:"foreignkey:UserID"`
 }
 
 func (user *User) BeforeCreate(tx *gorm.DB) (err error) {

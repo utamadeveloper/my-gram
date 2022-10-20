@@ -5,6 +5,7 @@ import (
 	"my-gram/model"
 	"net/http"
 
+	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 )
 
@@ -87,7 +88,7 @@ func UserFindAll(ctx *gin.Context) {
 		users []model.User
 	)
 
-	userAll := config.Db.Debug().Find(&users)
+	userAll := config.Db.Debug().Select("ID", "Username", "Email", "DOB", "Age").Preload("SocialMedias").Preload("Comments").Preload("Photos").Find(&users)
 
 	if userAll.Error != nil {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
@@ -112,8 +113,21 @@ func UserFindOne(ctx *gin.Context) {
 		user model.User
 	)
 
+	userAuth := ctx.MustGet("userData")
+	userAuthId := userAuth.(jwt.MapClaims)["id"]
+
 	id := ctx.Param("id")
-	userById := config.Db.Debug().Where("id=?", id).First(&user)
+
+	if id != userAuthId {
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+			"code":    9,
+			"type":    "FORBIDDEN",
+			"message": "User forbidden",
+		})
+		return
+	}
+
+	userById := config.Db.Debug().Select("ID", "Username", "Email", "DOB", "Age").Where("id=?", id).Preload("SocialMedias").Preload("Comments").Preload("Photos").First(&user)
 
 	if userById.Error != nil {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{

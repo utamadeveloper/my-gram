@@ -23,9 +23,9 @@ func Authorization() gin.HandlerFunc {
 
 		if userById.Error != nil {
 			ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-				"code":    96,
-				"type":    "BAD_REQUEST",
-				"message": "Failed find user",
+				"code":    97,
+				"type":    "UNAUTHENTICATED",
+				"message": "Failed find auth user",
 				"error":   userById.Error.Error(),
 			})
 			return
