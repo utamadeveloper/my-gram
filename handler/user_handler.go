@@ -131,7 +131,7 @@ func UserFindOne(ctx *gin.Context) {
 
 	if id != userAuthId {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-			"code":    9,
+			"code":    97,
 			"type":    "FORBIDDEN",
 			"message": "User forbidden",
 		})
@@ -188,6 +188,18 @@ func UserUpdate(ctx *gin.Context) {
 		return
 	}
 
+	userAuth := ctx.MustGet("userData")
+	userAuthId := userAuth.(jwt.MapClaims)["id"]
+
+	if user.ID != userAuthId {
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+			"code":    97,
+			"type":    "FORBIDDEN",
+			"message": "User forbidden",
+		})
+		return
+	}
+
 	config.Db.Debug().Save(&user)
 
 	ctx.JSON(http.StatusOK, gin.H{
@@ -212,6 +224,18 @@ func UserDelete(ctx *gin.Context) {
 			"type":    "BAD_REQUEST",
 			"message": "Failed find user",
 			"error":   userById.Error.Error(),
+		})
+		return
+	}
+
+	userAuth := ctx.MustGet("userData")
+	userAuthId := userAuth.(jwt.MapClaims)["id"]
+
+	if user.ID != userAuthId {
+		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
+			"code":    97,
+			"type":    "FORBIDDEN",
+			"message": "User forbidden",
 		})
 		return
 	}

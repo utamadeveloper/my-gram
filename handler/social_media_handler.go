@@ -31,7 +31,7 @@ func SocialMediaCreate(ctx *gin.Context) {
 
 	if socialMedia.UserID != userAuthId {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-			"code":    9,
+			"code":    97,
 			"type":    "FORBIDDEN",
 			"message": "User forbidden",
 		})
@@ -132,7 +132,7 @@ func SocialMediaUpdate(ctx *gin.Context) {
 
 	if socialMedia.UserID != userAuthId {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-			"code":    9,
+			"code":    97,
 			"type":    "FORBIDDEN",
 			"message": "User forbidden",
 		})
@@ -184,7 +184,7 @@ func SocialMediaDelete(ctx *gin.Context) {
 
 	if socialMedia.UserID != userAuthId {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-			"code":    9,
+			"code":    97,
 			"type":    "FORBIDDEN",
 			"message": "User forbidden",
 		})

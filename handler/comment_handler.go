@@ -34,7 +34,7 @@ func CommentCreate(ctx *gin.Context) {
 
 	if comment.UserID != userAuthId {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-			"code":    9,
+			"code":    97,
 			"type":    "FORBIDDEN",
 			"message": "User forbidden",
 		})
@@ -148,7 +148,7 @@ func CommentUpdate(ctx *gin.Context) {
 
 	if comment.UserID != userAuthId {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-			"code":    9,
+			"code":    97,
 			"type":    "FORBIDDEN",
 			"message": "User forbidden",
 		})
@@ -200,7 +200,7 @@ func CommentDelete(ctx *gin.Context) {
 
 	if comment.UserID != userAuthId {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
-			"code":    9,
+			"code":    97,
 			"type":    "FORBIDDEN",
 			"message": "User forbidden",
 		})
