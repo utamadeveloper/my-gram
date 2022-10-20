@@ -65,7 +65,8 @@ func PhotoFindAll(ctx *gin.Context) {
 
 	userIdQuery := ctx.Query("user_id")
 
-	photoAll := config.Db.Debug().Preload("Comments")
+	photoAll := config.Db.Debug()
+	photoAll = photoAll.Preload("Comments")
 
 	if userIdQuery != "" {
 		photoAll = photoAll.Where("user_id=?", userIdQuery)

@@ -99,7 +99,12 @@ func UserFindAll(ctx *gin.Context) {
 		users []model.User
 	)
 
-	userAll := config.Db.Debug().Select("ID", "Username", "Email", "DOB", "Age").Preload("SocialMedias").Preload("Comments").Preload("Photos").Find(&users)
+	userAll := config.Db.Debug()
+	userAll = userAll.Select("ID", "Username", "Email", "DOB", "Age")
+	userAll = userAll.Preload("SocialMedias")
+	userAll = userAll.Preload("Comments")
+	userAll = userAll.Preload("Photos")
+	userAll = userAll.Find(&users)
 
 	if userAll.Error != nil {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
@@ -138,7 +143,13 @@ func UserFindOne(ctx *gin.Context) {
 		return
 	}
 
-	userById := config.Db.Debug().Select("ID", "Username", "Email", "DOB", "Age").Where("id=?", id).Preload("SocialMedias").Preload("Comments").Preload("Photos").First(&user)
+	userById := config.Db.Debug()
+	userById = userById.Select("ID", "Username", "Email", "DOB", "Age")
+	userById = userById.Where("id=?", id)
+	userById = userById.Preload("SocialMedias")
+	userById = userById.Preload("Comments")
+	userById = userById.Preload("Photos")
+	userById = userById.First(&user)
 
 	if userById.Error != nil {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
